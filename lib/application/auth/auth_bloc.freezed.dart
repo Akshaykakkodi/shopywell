@@ -22,27 +22,33 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password) registerWithEmail,
+    required TResult Function(String email, String password) login,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String password)? registerWithEmail,
+    TResult? Function(String email, String password)? login,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? registerWithEmail,
+    TResult Function(String email, String password)? login,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RegisterWithEmail value) registerWithEmail,
+    required TResult Function(Login value) login,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(RegisterWithEmail value)? registerWithEmail,
+    TResult? Function(Login value)? login,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RegisterWithEmail value)? registerWithEmail,
+    TResult Function(Login value)? login,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 
@@ -178,6 +184,7 @@ class _$RegisterWithEmailImpl implements RegisterWithEmail {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password) registerWithEmail,
+    required TResult Function(String email, String password) login,
   }) {
     return registerWithEmail(email, password);
   }
@@ -186,6 +193,7 @@ class _$RegisterWithEmailImpl implements RegisterWithEmail {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String password)? registerWithEmail,
+    TResult? Function(String email, String password)? login,
   }) {
     return registerWithEmail?.call(email, password);
   }
@@ -194,6 +202,7 @@ class _$RegisterWithEmailImpl implements RegisterWithEmail {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? registerWithEmail,
+    TResult Function(String email, String password)? login,
     required TResult orElse(),
   }) {
     if (registerWithEmail != null) {
@@ -206,6 +215,7 @@ class _$RegisterWithEmailImpl implements RegisterWithEmail {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RegisterWithEmail value) registerWithEmail,
+    required TResult Function(Login value) login,
   }) {
     return registerWithEmail(this);
   }
@@ -214,6 +224,7 @@ class _$RegisterWithEmailImpl implements RegisterWithEmail {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(RegisterWithEmail value)? registerWithEmail,
+    TResult? Function(Login value)? login,
   }) {
     return registerWithEmail?.call(this);
   }
@@ -222,6 +233,7 @@ class _$RegisterWithEmailImpl implements RegisterWithEmail {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RegisterWithEmail value)? registerWithEmail,
+    TResult Function(Login value)? login,
     required TResult orElse(),
   }) {
     if (registerWithEmail != null) {
@@ -249,8 +261,164 @@ abstract class RegisterWithEmail implements AuthEvent {
 }
 
 /// @nodoc
+abstract class _$$LoginImplCopyWith<$Res> implements $AuthEventCopyWith<$Res> {
+  factory _$$LoginImplCopyWith(
+    _$LoginImpl value,
+    $Res Function(_$LoginImpl) then,
+  ) = __$$LoginImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String email, String password});
+}
+
+/// @nodoc
+class __$$LoginImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$LoginImpl>
+    implements _$$LoginImplCopyWith<$Res> {
+  __$$LoginImplCopyWithImpl(
+    _$LoginImpl _value,
+    $Res Function(_$LoginImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? email = null, Object? password = null}) {
+    return _then(
+      _$LoginImpl(
+        null == email
+            ? _value.email
+            : email // ignore: cast_nullable_to_non_nullable
+                as String,
+        null == password
+            ? _value.password
+            : password // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$LoginImpl implements Login {
+  const _$LoginImpl(this.email, this.password);
+
+  @override
+  final String email;
+  @override
+  final String password;
+
+  @override
+  String toString() {
+    return 'AuthEvent.login(email: $email, password: $password)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoginImpl &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, email, password);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoginImplCopyWith<_$LoginImpl> get copyWith =>
+      __$$LoginImplCopyWithImpl<_$LoginImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) registerWithEmail,
+    required TResult Function(String email, String password) login,
+  }) {
+    return login(email, password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? registerWithEmail,
+    TResult? Function(String email, String password)? login,
+  }) {
+    return login?.call(email, password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? registerWithEmail,
+    TResult Function(String email, String password)? login,
+    required TResult orElse(),
+  }) {
+    if (login != null) {
+      return login(email, password);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RegisterWithEmail value) registerWithEmail,
+    required TResult Function(Login value) login,
+  }) {
+    return login(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(RegisterWithEmail value)? registerWithEmail,
+    TResult? Function(Login value)? login,
+  }) {
+    return login?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RegisterWithEmail value)? registerWithEmail,
+    TResult Function(Login value)? login,
+    required TResult orElse(),
+  }) {
+    if (login != null) {
+      return login(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Login implements AuthEvent {
+  const factory Login(final String email, final String password) = _$LoginImpl;
+
+  @override
+  String get email;
+  @override
+  String get password;
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoginImplCopyWith<_$LoginImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$AuthState {
   ApiState get registerState => throw _privateConstructorUsedError;
+  ApiState get loginState => throw _privateConstructorUsedError;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -264,7 +432,7 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({ApiState registerState});
+  $Res call({ApiState registerState, ApiState loginState});
 }
 
 /// @nodoc
@@ -281,13 +449,18 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? registerState = null}) {
+  $Res call({Object? registerState = null, Object? loginState = null}) {
     return _then(
       _value.copyWith(
             registerState:
                 null == registerState
                     ? _value.registerState
                     : registerState // ignore: cast_nullable_to_non_nullable
+                        as ApiState,
+            loginState:
+                null == loginState
+                    ? _value.loginState
+                    : loginState // ignore: cast_nullable_to_non_nullable
                         as ApiState,
           )
           as $Val,
@@ -304,7 +477,7 @@ abstract class _$$AuthStateImplCopyWith<$Res>
   ) = __$$AuthStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ApiState registerState});
+  $Res call({ApiState registerState, ApiState loginState});
 }
 
 /// @nodoc
@@ -320,13 +493,18 @@ class __$$AuthStateImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? registerState = null}) {
+  $Res call({Object? registerState = null, Object? loginState = null}) {
     return _then(
       _$AuthStateImpl(
         registerState:
             null == registerState
                 ? _value.registerState
                 : registerState // ignore: cast_nullable_to_non_nullable
+                    as ApiState,
+        loginState:
+            null == loginState
+                ? _value.loginState
+                : loginState // ignore: cast_nullable_to_non_nullable
                     as ApiState,
       ),
     );
@@ -336,14 +514,19 @@ class __$$AuthStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AuthStateImpl implements _AuthState {
-  const _$AuthStateImpl({required this.registerState});
+  const _$AuthStateImpl({
+    required this.registerState,
+    required this.loginState,
+  });
 
   @override
   final ApiState registerState;
+  @override
+  final ApiState loginState;
 
   @override
   String toString() {
-    return 'AuthState(registerState: $registerState)';
+    return 'AuthState(registerState: $registerState, loginState: $loginState)';
   }
 
   @override
@@ -352,11 +535,13 @@ class _$AuthStateImpl implements _AuthState {
         (other.runtimeType == runtimeType &&
             other is _$AuthStateImpl &&
             (identical(other.registerState, registerState) ||
-                other.registerState == registerState));
+                other.registerState == registerState) &&
+            (identical(other.loginState, loginState) ||
+                other.loginState == loginState));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, registerState);
+  int get hashCode => Object.hash(runtimeType, registerState, loginState);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -368,11 +553,15 @@ class _$AuthStateImpl implements _AuthState {
 }
 
 abstract class _AuthState implements AuthState {
-  const factory _AuthState({required final ApiState registerState}) =
-      _$AuthStateImpl;
+  const factory _AuthState({
+    required final ApiState registerState,
+    required final ApiState loginState,
+  }) = _$AuthStateImpl;
 
   @override
   ApiState get registerState;
+  @override
+  ApiState get loginState;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.

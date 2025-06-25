@@ -26,6 +26,8 @@ extension TextStyleX on TextStyle {
   TextStyle get s28 => copyWith(fontSize: 28 * _scaleWidth);
   TextStyle get s30 => copyWith(fontSize: 30 * _scaleWidth);
   TextStyle get s31 => copyWith(fontSize: 31 * _scaleWidth);
+  TextStyle get s34 => copyWith(fontSize: 34 * _scaleWidth);
+
   TextStyle get s36 => copyWith(fontSize: 36 * _scaleWidth);
   TextStyle get s40 => copyWith(fontSize: 40 * _scaleWidth);
 

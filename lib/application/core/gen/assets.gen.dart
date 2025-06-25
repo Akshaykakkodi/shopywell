@@ -25,14 +25,29 @@ class $AssetsImagesGen {
 class $AssetsImagesPngGen {
   const $AssetsImagesPngGen();
 
+  /// File path: assets/images/png/beauty.png
+  AssetGenImage get beauty => const AssetGenImage('assets/images/png/beauty.png');
+
+  /// File path: assets/images/png/fashion.png
+  AssetGenImage get fashion => const AssetGenImage('assets/images/png/fashion.png');
+
+  /// File path: assets/images/png/filter.png
+  AssetGenImage get filter => const AssetGenImage('assets/images/png/filter.png');
+
   /// File path: assets/images/png/google 1.png
   AssetGenImage get google1Png => const AssetGenImage('assets/images/png/google 1.png');
 
   /// File path: assets/images/png/google 1.svg
   SvgGenImage get google1Svg => const SvgGenImage('assets/images/png/google 1.svg');
 
+  /// File path: assets/images/png/kids.png
+  AssetGenImage get kids => const AssetGenImage('assets/images/png/kids.png');
+
   /// File path: assets/images/png/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/png/logo.png');
+
+  /// File path: assets/images/png/mens.png
+  AssetGenImage get mens => const AssetGenImage('assets/images/png/mens.png');
 
   /// File path: assets/images/png/onboarding_1.png
   AssetGenImage get onboarding1 =>
@@ -46,14 +61,39 @@ class $AssetsImagesPngGen {
   AssetGenImage get onboarding3 =>
       const AssetGenImage('assets/images/png/onboarding_3.png');
 
+  /// File path: assets/images/png/sidemenu.png
+  AssetGenImage get sidemenu => const AssetGenImage('assets/images/png/sidemenu.png');
+
+  /// File path: assets/images/png/sort.png
+  AssetGenImage get sort => const AssetGenImage('assets/images/png/sort.png');
+
+  /// File path: assets/images/png/unsplash.png
+  AssetGenImage get unsplash => const AssetGenImage('assets/images/png/unsplash.png');
+
+  /// File path: assets/images/png/userpic.png
+  AssetGenImage get userpic => const AssetGenImage('assets/images/png/userpic.png');
+
+  /// File path: assets/images/png/women.png
+  AssetGenImage get women => const AssetGenImage('assets/images/png/women.png');
+
   /// List of all assets
   List<dynamic> get values => [
+    beauty,
+    fashion,
+    filter,
     google1Png,
     google1Svg,
+    kids,
     logo,
+    mens,
     onboarding1,
     onboarding2,
     onboarding3,
+    sidemenu,
+    sort,
+    unsplash,
+    userpic,
+    women,
   ];
 }
 

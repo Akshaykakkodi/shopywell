@@ -10,13 +10,13 @@ class Register {
 
   Register({required this.firebaseAuth});
 
-  Future<Either<MainFailure,Unit>> call(String email,String password)async{
+  Future<Either<MainFailure,UserCredential>> call(String email,String password)async{
  try {
-      await firebaseAuth.createUserWithEmailAndPassword(
+    var user=  await firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-      return right(unit);
+      return right(user);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
         return left( MainFailure(message: "Email Already Used"));

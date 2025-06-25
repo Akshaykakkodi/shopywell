@@ -137,11 +137,11 @@ class TextInputDecoration {
       borderRadius: BorderRadius.circular(10),borderSide: BorderSide(color: Color(0xffA8A8A9),width: 1));
 
   static InputBorder disabled = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),borderSide: BorderSide(color: Color(0xffA8A8A9),));
+      borderRadius: BorderRadius.circular(10),borderSide: BorderSide(color: Color(0xffA8A8A9),width: 1));
 
   static InputBorder enabled = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),borderSide: BorderSide(color: Color(0xffA8A8A9),));
+      borderRadius: BorderRadius.circular(10),borderSide: BorderSide(color: Color(0xffA8A8A9),width: 1));
 
   static InputBorder focused =OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),borderSide: BorderSide(color: Color(0xffA8A8A9),));
+      borderRadius: BorderRadius.circular(10),borderSide: BorderSide(color: Color(0xffA8A8A9),width: 1));
 }
