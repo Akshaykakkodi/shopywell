@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:shopywell/application/auth/auth_bloc.dart';
+import 'package:shopywell/application/core/enums/enums.dart';
 import 'package:shopywell/application/core/extension/extensions.dart';
 import 'package:shopywell/application/core/gen/assets.gen.dart';
-import 'package:shopywell/application/core/route/app_route.dart' show AppRouter;
+import 'package:shopywell/application/core/route/app_route.dart';
 import 'package:shopywell/application/core/theme/app_colors.dart';
 import 'package:shopywell/application/core/theme/app_text_syles.dart';
-import 'package:shopywell/presentation/registration/registration_screen.dart';
 import 'package:shopywell/presentation/widgets/custom_textField.dart';
 import 'package:shopywell/presentation/widgets/primary_button.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+import '../login/login_screen.dart';
+
+class RegistrationScreen extends StatefulWidget {
+  const RegistrationScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegistrationScreenState extends State<RegistrationScreen> {
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
+  var confirmPasswordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,10 +35,11 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Gap(20),
-                Text("Welcome\nBack!", style: context.textStyle.s36.w800),
+                Text("Create\nAccount", style: context.textStyle.s36.w800),
                 Gap(context.getSize.height * 0.025),
                 CustTextField(
                   hinText: "Username or Email",
+                  controller: emailController,
                   prefixIcon: Padding(
                     padding: const EdgeInsets.only(left: 8.0),
                     child: Icon(Icons.person),
@@ -40,25 +48,61 @@ class _LoginScreenState extends State<LoginScreen> {
                 Gap(context.getSize.height * 0.025),
                 CustTextField(
                   hinText: "Password",
+                  controller: passwordController,
                   suffixIcon: Icon(Icons.visibility),
                   prefixIcon: Padding(
                     padding: const EdgeInsets.only(left: 8.0),
                     child: Icon(Icons.lock),
                   ),
                 ),
-                Gap(8),
-                Row(
-                  children: [
-                    Spacer(),
-                    Text(
-                      "Forgot Password?",
-                      style: context.textStyle.red.s12.w400,
-                    ),
-                  ],
+                Gap(context.getSize.height * 0.025),
+                CustTextField(
+                  hinText: "Confirm Password",
+                  controller: confirmPasswordController,
+                  suffixIcon: Icon(Icons.visibility),
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Icon(Icons.lock),
+                  ),
                 ),
-                Gap(context.getSize.height * 0.06),
-            
-                PrimaryButton(title: "Login", onPressed: () {}),
+
+                Gap(context.getSize.height * 0.02),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'By clicking the ',
+                        style: context.textStyle.s12.w400.secondary,
+                      ),
+                      TextSpan(
+                        text: 'Register',
+                        style: context.textStyle.s12.w400.red,
+                      ),
+                      TextSpan(
+                        text: ' button, you agree to the public offer',
+                        style: context.textStyle.s12.w400.secondary,
+                      ),
+                    ],
+                  ),
+                ),
+                Gap(context.getSize.height * 0.02),
+
+                BlocBuilder<AuthBloc, AuthState>(
+                  builder: (context, authState) {
+                    return PrimaryButton(
+                      loading: authState.registerState == ApiState.loading,
+                      title: "Create Account",
+                      onPressed: () {
+                        context.read<AuthBloc>().add(
+                          RegisterWithEmail(
+                            emailController.text,
+                            passwordController.text,
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
                 Gap(context.getSize.height * 0.06),
                 Center(
                   child: Text(
@@ -67,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 Gap(context.getSize.height * 0.03),
-            
+
                 Row(
                   spacing: 16,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -77,22 +121,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     SocialTile(child: Assets.images.svg.facebook.svg()),
                   ],
                 ),
-                Gap(context.getSize.height*0.025),
+                Gap(context.getSize.height * 0.025),
                 Center(
                   child: GestureDetector(
                     onTap: () {
-                       AppRouter.pushScreen(RegistrationScreen());
+                      AppRouter.pushScreen(LoginScreen());
                     },
                     child: RichText(
                       text: TextSpan(
                         children: [
                           TextSpan(
-                            text: "Create An Account ",
+                            text: "I Already Have An Account ",
                             style: context.textStyle.s12.w400.secondary,
                           ),
-                    
+
                           TextSpan(
-                            text: "SignUp",
+                            text: "Login",
                             style: context.textStyle.s14.w600.red.copyWith(
                               decoration: TextDecoration.underline,
                               decorationColor: AppColors.primaryColor,
@@ -108,26 +152,6 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class SocialTile extends StatelessWidget {
-  const SocialTile({super.key, required this.child});
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(15),
-      height: 54,
-      width: 54,
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.primaryColor),
-        color: AppColors.lightPink,
-        borderRadius: BorderRadius.circular(50),
-      ),
-      child: child,
     );
   }
 }

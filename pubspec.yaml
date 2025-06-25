@@ -36,6 +36,9 @@ dependencies:
   freezed_annotation: ^2.4.4
   freezed: ^2.5.2
   cached_network_image:
+  dartz: ^0.10.1
+  get_it: ^8.0.3
+  injectable: ^2.5.0
 
 dev_dependencies:
   flutter_test:
@@ -45,6 +48,7 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   build_runner: ^2.4.11
   flutter_gen_runner:
+  injectable_generator: ^2.6.2
 
 flutter_gen:
   output: lib/application/core/gen/ 
