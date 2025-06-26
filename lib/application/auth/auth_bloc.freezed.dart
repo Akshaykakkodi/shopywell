@@ -417,8 +417,10 @@ abstract class Login implements AuthEvent {
 
 /// @nodoc
 mixin _$AuthState {
-  ApiState get registerState => throw _privateConstructorUsedError;
-  ApiState get loginState => throw _privateConstructorUsedError;
+  ApiState? get registerState => throw _privateConstructorUsedError;
+  ApiState? get loginState => throw _privateConstructorUsedError;
+  bool get isLoggedIn => throw _privateConstructorUsedError;
+  UserCredential? get user => throw _privateConstructorUsedError;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -432,7 +434,12 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({ApiState registerState, ApiState loginState});
+  $Res call({
+    ApiState? registerState,
+    ApiState? loginState,
+    bool isLoggedIn,
+    UserCredential? user,
+  });
 }
 
 /// @nodoc
@@ -449,19 +456,34 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? registerState = null, Object? loginState = null}) {
+  $Res call({
+    Object? registerState = freezed,
+    Object? loginState = freezed,
+    Object? isLoggedIn = null,
+    Object? user = freezed,
+  }) {
     return _then(
       _value.copyWith(
             registerState:
-                null == registerState
+                freezed == registerState
                     ? _value.registerState
                     : registerState // ignore: cast_nullable_to_non_nullable
-                        as ApiState,
+                        as ApiState?,
             loginState:
-                null == loginState
+                freezed == loginState
                     ? _value.loginState
                     : loginState // ignore: cast_nullable_to_non_nullable
-                        as ApiState,
+                        as ApiState?,
+            isLoggedIn:
+                null == isLoggedIn
+                    ? _value.isLoggedIn
+                    : isLoggedIn // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            user:
+                freezed == user
+                    ? _value.user
+                    : user // ignore: cast_nullable_to_non_nullable
+                        as UserCredential?,
           )
           as $Val,
     );
@@ -477,7 +499,12 @@ abstract class _$$AuthStateImplCopyWith<$Res>
   ) = __$$AuthStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ApiState registerState, ApiState loginState});
+  $Res call({
+    ApiState? registerState,
+    ApiState? loginState,
+    bool isLoggedIn,
+    UserCredential? user,
+  });
 }
 
 /// @nodoc
@@ -493,19 +520,34 @@ class __$$AuthStateImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? registerState = null, Object? loginState = null}) {
+  $Res call({
+    Object? registerState = freezed,
+    Object? loginState = freezed,
+    Object? isLoggedIn = null,
+    Object? user = freezed,
+  }) {
     return _then(
       _$AuthStateImpl(
         registerState:
-            null == registerState
+            freezed == registerState
                 ? _value.registerState
                 : registerState // ignore: cast_nullable_to_non_nullable
-                    as ApiState,
+                    as ApiState?,
         loginState:
-            null == loginState
+            freezed == loginState
                 ? _value.loginState
                 : loginState // ignore: cast_nullable_to_non_nullable
-                    as ApiState,
+                    as ApiState?,
+        isLoggedIn:
+            null == isLoggedIn
+                ? _value.isLoggedIn
+                : isLoggedIn // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        user:
+            freezed == user
+                ? _value.user
+                : user // ignore: cast_nullable_to_non_nullable
+                    as UserCredential?,
       ),
     );
   }
@@ -515,18 +557,24 @@ class __$$AuthStateImplCopyWithImpl<$Res>
 
 class _$AuthStateImpl implements _AuthState {
   const _$AuthStateImpl({
-    required this.registerState,
-    required this.loginState,
+    this.registerState,
+    this.loginState,
+    required this.isLoggedIn,
+    this.user,
   });
 
   @override
-  final ApiState registerState;
+  final ApiState? registerState;
   @override
-  final ApiState loginState;
+  final ApiState? loginState;
+  @override
+  final bool isLoggedIn;
+  @override
+  final UserCredential? user;
 
   @override
   String toString() {
-    return 'AuthState(registerState: $registerState, loginState: $loginState)';
+    return 'AuthState(registerState: $registerState, loginState: $loginState, isLoggedIn: $isLoggedIn, user: $user)';
   }
 
   @override
@@ -537,11 +585,15 @@ class _$AuthStateImpl implements _AuthState {
             (identical(other.registerState, registerState) ||
                 other.registerState == registerState) &&
             (identical(other.loginState, loginState) ||
-                other.loginState == loginState));
+                other.loginState == loginState) &&
+            (identical(other.isLoggedIn, isLoggedIn) ||
+                other.isLoggedIn == isLoggedIn) &&
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, registerState, loginState);
+  int get hashCode =>
+      Object.hash(runtimeType, registerState, loginState, isLoggedIn, user);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -554,14 +606,20 @@ class _$AuthStateImpl implements _AuthState {
 
 abstract class _AuthState implements AuthState {
   const factory _AuthState({
-    required final ApiState registerState,
-    required final ApiState loginState,
+    final ApiState? registerState,
+    final ApiState? loginState,
+    required final bool isLoggedIn,
+    final UserCredential? user,
   }) = _$AuthStateImpl;
 
   @override
-  ApiState get registerState;
+  ApiState? get registerState;
   @override
-  ApiState get loginState;
+  ApiState? get loginState;
+  @override
+  bool get isLoggedIn;
+  @override
+  UserCredential? get user;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.

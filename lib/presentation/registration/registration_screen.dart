@@ -22,6 +22,8 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> with ValidationMixin {
+  bool hidePassword = true;
+  bool hideConfirmPassword = true;
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   var confirmPasswordController = TextEditingController();
@@ -56,7 +58,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> with Validation
                   CustTextField(
                     hinText: "Password",
                     controller: passwordController,
-                    suffixIcon: Icon(Icons.visibility),
+                    obsecuretext: hidePassword,
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          hidePassword = !hidePassword;
+                        });
+                      },
+                      child: Icon(
+                        hidePassword ? Icons.visibility : Icons.visibility_off,
+                      ),
+                    ),
                     validator: (value) =>
                       validatePassword(value)
                     ,
@@ -68,8 +80,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> with Validation
                   Gap(context.getSize.height * 0.025),
                   CustTextField(
                     hinText: "Confirm Password",
+                    obsecuretext: hideConfirmPassword,
                     controller: confirmPasswordController,
-                    suffixIcon: Icon(Icons.visibility),
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          hideConfirmPassword = !hideConfirmPassword;
+                        });
+                      },
+                      child: Icon(
+                        hideConfirmPassword ? Icons.visibility : Icons.visibility_off,
+                      ),
+                    ),
                     validator: (value) =>
                       validateConfirmPassword(value, passwordController.text)
                     ,

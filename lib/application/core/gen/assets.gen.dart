@@ -25,6 +25,9 @@ class $AssetsImagesGen {
 class $AssetsImagesPngGen {
   const $AssetsImagesPngGen();
 
+  /// File path: assets/images/png/banner.png
+  AssetGenImage get banner => const AssetGenImage('assets/images/png/banner.png');
+
   /// File path: assets/images/png/beauty.png
   AssetGenImage get beauty => const AssetGenImage('assets/images/png/beauty.png');
 
@@ -78,6 +81,7 @@ class $AssetsImagesPngGen {
 
   /// List of all assets
   List<dynamic> get values => [
+    banner,
     beauty,
     fashion,
     filter,

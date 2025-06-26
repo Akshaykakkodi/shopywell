@@ -7,6 +7,9 @@ class AppColors {
   static Color textGrey2=Color(0xffC4C4C4);
   static Color secondaryText=Color(0xff575757);
   static const lightPink=Color(0xffFCF3F6);
+  static const lightBlue=Color(0xff4392F9);
+  static const pink=Color(0xffFD6E87);
+
 
   
 

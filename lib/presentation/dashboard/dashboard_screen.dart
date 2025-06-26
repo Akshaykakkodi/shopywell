@@ -1,7 +1,11 @@
+
 import 'package:flutter/material.dart';
 import 'package:shopywell/application/core/extension/extensions.dart';
-import 'package:shopywell/application/core/gen/assets.gen.dart';
+import 'package:shopywell/presentation/dashboard/cart_screen.dart';
 import 'package:shopywell/presentation/dashboard/home_screen.dart';
+import 'package:shopywell/presentation/dashboard/search_screen.dart';
+import 'package:shopywell/presentation/dashboard/settings_screen.dart';
+import 'package:shopywell/presentation/dashboard/wishlist_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -18,18 +22,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
       selectedIndex = index;
     });
     pageController.animateToPage(
-      index,
-      duration: Duration(milliseconds: 300),
-      curve: Curves.linear,
+      index, duration: Duration(milliseconds: 200), curve: Curves.linear,
+     
     );
   }
 
   List<Widget> pages = [
     HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
+    WishlistScreen(),
+    CartScreen(),
+    SearchScreen(),
+    SettingsScreen(),
   ];
 
   @override

@@ -82,35 +82,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Expanded(
-                            child:
-                                onBoardingState.index != 0
-                                    ? GestureDetector(
-                                      onTap: () {
-                                        context.read<OnBoardingBloc>().add(
-                                          OnPrev(),
-                                        );
-                                      },
-                                      child: Text(
-                                        "Prev",
-                                        style: context.textStyle.s18.w600.grey1,
-                                      ),
-                                    )
-                                    : Gap(40),
-                          ),
+                          onBoardingState.index != 0
+                              ? GestureDetector(
+                                onTap: () {
+                                  context.read<OnBoardingBloc>().add(
+                                    OnPrev(),
+                                  );
+                                },
+                                child: Text(
+                                  "Prev",
+                                  style: context.textStyle.s18.w600.grey1,
+                                ),
+                              )
+                              : Gap(40),
 
                           GestureDetector(
                             onTap: () {
                               context.read<OnBoardingBloc>().add(OnNext());
                             },
-                            child: Expanded(
-                              child: Text(
-                                onBoardingState.index != 2
-                                    ? "Next"
-                                    : "Get Started",
-                                style: context.textStyle.s18.red.w600,
-                                textAlign: TextAlign.right,
-                              ),
+                            child: Text(
+                              onBoardingState.index != 2
+                                  ? "Next"
+                                  : "Get Started",
+                              style: context.textStyle.s18.red.w600,
+                              textAlign: TextAlign.right,
                             ),
                           ),
                         ],

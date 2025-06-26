@@ -24,6 +24,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> with ValidationMixin {
+  bool hidePassword = true;
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   var formkey = GlobalKey<FormState>();
@@ -54,8 +55,18 @@ class _LoginScreenState extends State<LoginScreen> with ValidationMixin {
                   Gap(context.getSize.height * 0.025),
                   CustTextField(
                     hinText: "Password",
+                    obsecuretext: hidePassword,
                     controller: passwordController,
-                    suffixIcon: Icon(Icons.visibility),
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          hidePassword = !hidePassword;
+                        });
+                      },
+                      child: Icon(
+                        hidePassword ? Icons.visibility : Icons.visibility_off,
+                      ),
+                    ),
                     validator: (value) => validatePassword(value),
                     prefixIcon: Padding(
                       padding: const EdgeInsets.only(left: 8.0),
